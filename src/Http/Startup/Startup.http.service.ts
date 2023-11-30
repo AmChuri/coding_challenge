@@ -4,7 +4,9 @@ import StartupMapper from './Startup.mapper';
 
 export class StartupHttpService {
   public static async getAllStartup(): Promise<Startup[]> {
-    const response = await axios.get<StartupDTO[]>(`/api/startups`);
+    const response = await axios.get<StartupDTO[]>(
+      `/api/startups?all=true`
+    );
     return StartupMapper.mapArray(response.data);
   }
 
